@@ -51,7 +51,7 @@ func resourceAwsGameliftFleet() *schema.Resource {
 			},
 			"ec2_inbound_permission": {
 				Type:     schema.TypeList,
-				ForceNew: true,
+				ForceNew: true, // TODO: Updatable via UpdateFleetPortSettings
 				Optional: true,
 				MaxItems: 50,
 				Elem: &schema.Resource{
@@ -105,13 +105,13 @@ func resourceAwsGameliftFleet() *schema.Resource {
 			"peer_vpc_aws_account_id": {
 				Type:         schema.TypeString,
 				Optional:     true,
-				ForceNew:     true,
+				ForceNew:     true, // TODO: Updatable via CreateVpcPeeringAuthorization & CreateVpcPeeringConnection
 				ValidateFunc: validateAwsAccountId,
 			},
 			"peer_vpc_id": {
 				Type:     schema.TypeString,
 				Optional: true,
-				ForceNew: true,
+				ForceNew: true, // TODO: Updatable via CreateVpcPeeringAuthorization & CreateVpcPeeringConnection
 			},
 			"resource_creation_limit_policy": {
 				Type:     schema.TypeList,
@@ -136,7 +136,7 @@ func resourceAwsGameliftFleet() *schema.Resource {
 				Type:     schema.TypeList,
 				MaxItems: 1,
 				Optional: true,
-				ForceNew: true,
+				ForceNew: true, // TODO: Updatable via UpdateRuntimeConfiguration
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"game_session_activation_timeout_seconds": {
